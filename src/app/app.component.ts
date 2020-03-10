@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { PoMenuItem } from '@portinari/portinari-ui';
+import { Router } from '@angular/router';
+import { PoI18nService, PoMenuItem } from '@portinari/portinari-ui';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,24 @@ import { PoMenuItem } from '@portinari/portinari-ui';
 })
 export class AppComponent {
 
+  public literals = {};
+
   readonly menus: Array<PoMenuItem> = [
-    { label: 'Home', action: this.onClick.bind(this) }
+    { label: 'Home', action: this.home.bind(this) }
   ];
 
-  private onClick() {
-    alert('Clicked in menu item')
+  constructor(
+    poI18nService: PoI18nService,
+    private readonly router: Router
+  ) {
+    poI18nService.getLiterals().subscribe(
+      literals => {
+        this.literals = literals;
+      }
+    );
+  }
+
+  private home() {
+    this.router.navigate(['']);
   }
 }

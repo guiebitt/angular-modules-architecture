@@ -1,30 +1,22 @@
-import { NgModule } from '@angular/core';
-import { PoI18nConfig, PoI18nModule, PoWidgetModule } from '@portinari/portinari-ui';
-import { generalEn } from './i18n/general-en';
-import { generalEs } from './i18n/general-es';
-import { generalPt } from './i18n/general-pt';
-import { Module2Component } from './module2.component';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { PoI18nModule, PoWidgetModule } from '@portinari/portinari-ui';
+import { module2En } from './i18n/module2-en';
+import { module2Es } from './i18n/module2-es';
+import { module2Pt } from './i18n/module2-pt';
+import { Module2Component } from './module2.component';
 
-export const i18nConfig: PoI18nConfig = {
-  default: {
-    language: 'pt-BR',
-    context: 'general'
-  },
-  contexts: {
-    general: {
-      'pt-BR': generalPt,
-      'en-US': generalEn,
-      es: generalEs
-    }
-  }
+export const module2Context = {
+  'pt-BR': module2Pt,
+  'en-US': module2En,
+  es: module2Es
 };
 
 @NgModule({
   declarations: [Module2Component],
   imports: [
     CommonModule,
-    PoI18nModule.config(i18nConfig),
+    PoI18nModule,
     PoWidgetModule
   ],
   exports: [Module2Component]

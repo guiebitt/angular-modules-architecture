@@ -1,11 +1,14 @@
-import { browser, by, element } from 'protractor';
+import { $, browser } from 'protractor';
 
 export class AppPage {
+
   navigateTo() {
     return browser.get(browser.baseUrl) as Promise<any>;
   }
 
-  getTitleText() {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+  async getWidgetInfo(id: string) {
+    return {
+      title: await $(`#${id} po-widget .po-widget-header`).getText()
+    };
   }
 }

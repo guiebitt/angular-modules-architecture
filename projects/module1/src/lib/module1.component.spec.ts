@@ -1,29 +1,32 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
 import { PoI18nModule, PoWidgetModule } from '@portinari/portinari-ui';
 import { Module1Component } from './module1.component';
-import { i18nConfig } from './module1.module';
+import { module1Context } from './module1.module';
 
 describe('Module1Component', () => {
 
   let component: Module1Component;
   let fixture: ComponentFixture<Module1Component>;
-  let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [Module1Component],
       imports: [
-        PoI18nModule.config(i18nConfig),
-        PoWidgetModule,
-        RouterTestingModule
+        PoI18nModule.config({
+          default: {
+            language: 'pt-BR',
+            context: 'module1'
+          },
+          contexts: {
+            module1: module1Context
+          }
+        }),
+        PoWidgetModule
       ],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    router = TestBed.get(Router);
     fixture = TestBed.createComponent(Module1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -34,8 +37,8 @@ describe('Module1Component', () => {
   });
 
   it('should call details', () => {
-    spyOn(router, 'navigate');
+    expect(component.showDetails).toBeFalsy();
     component.details();
-    expect(router.navigate).toHaveBeenCalledTimes(1);
+    expect(component.showDetails).toBeTruthy();
   });
 });

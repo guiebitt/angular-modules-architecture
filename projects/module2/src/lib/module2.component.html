@@ -2,4 +2,7 @@
     [p-title]="literals['module2']"
     (p-primary-action)="details()"
     [p-primary-label]="literals['details']">
+    <h1 *ngIf="showDetails">
+        {{ literals['details'] }}
+    </h1>
 </po-widget>

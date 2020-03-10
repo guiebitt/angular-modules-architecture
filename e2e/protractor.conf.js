@@ -13,7 +13,13 @@ exports.config = {
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    browserName: 'chrome'
+    browserName: 'chrome',
+    'chromeOptions': {
+      args: [ 'lang=pt-BR'],
+      prefs: {
+        intl: { accept_languages: 'pt-BR' }
+      },
+    }
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',

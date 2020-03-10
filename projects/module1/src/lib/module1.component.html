@@ -3,4 +3,7 @@
     p-primary
     (p-primary-action)="details()"
     [p-primary-label]="literals['details']">
+    <h1 *ngIf="showDetails">
+        {{ literals['details'] }}
+    </h1>
 </po-widget>

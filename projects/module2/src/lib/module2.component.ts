@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { PoI18nService } from '@portinari/portinari-ui';
 
 @Component({
@@ -10,13 +9,12 @@ import { PoI18nService } from '@portinari/portinari-ui';
 export class Module2Component implements OnInit {
 
   public literals = {};
+  public showDetails = false;
 
-  constructor(
-    private readonly route: Router,
-    private readonly activatedRoute: ActivatedRoute,
-    poI18nService: PoI18nService
-  ) {
-    poI18nService.getLiterals().subscribe(
+  constructor(poI18nService: PoI18nService) {
+    poI18nService.getLiterals({
+      context: 'module2'
+    }).subscribe(
       literals => {
         this.literals = literals;
       }
@@ -26,10 +24,7 @@ export class Module2Component implements OnInit {
   ngOnInit() {
   }
 
-  details(): Promise<boolean> {
-    console.log('Click details');
-    return this.route.navigate(['./../'], {
-      relativeTo: this.activatedRoute
-    });
+  details(): void {
+    this.showDetails = !this.showDetails;
   }
 }

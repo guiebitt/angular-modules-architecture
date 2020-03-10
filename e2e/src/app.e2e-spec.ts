@@ -1,16 +1,24 @@
-import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
+import { AppPage } from './app.po';
 
-describe('workspace-project App', () => {
+describe('App', () => {
+
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display widget from module1', async () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('angular-modules-architecture app is running!');
+    const widget1 = await page.getWidgetInfo('lib-module1');
+    expect(widget1.title).toBe('Módulo Um');
+  });
+
+  it('should display widget from module2', async () => {
+    page.navigateTo();
+    const widget2 = await page.getWidgetInfo('lib-module2');
+    expect(widget2.title).toBe('Módulo Dois');
   });
 
   afterEach(async () => {
