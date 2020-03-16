@@ -1,7 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "types": ["cypress", "node"]
-  },
-  "include": ["**/*.ts", "**/*.js"]
+    "outDir": "../../dist/out-tsc",
+    "module": "commonjs",
+    "target": "es5",
+    "types": [
+      "jasmine",
+      "jasminewd2",
+      "node"
+    ]
+  }
 }

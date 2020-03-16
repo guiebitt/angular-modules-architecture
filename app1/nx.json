@@ -2,10 +2,7 @@
   "npmScope": "app1",
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": "*",
     "tsconfig.json": "*",
     "tslint.json": "*",
     "nx.json": "*"
@@ -15,8 +12,7 @@
       "tags": []
     },
     "app1-e2e": {
-      "tags": [],
-      "implicitDependencies": ["app1"]
+      "tags": []
     }
   }
 }

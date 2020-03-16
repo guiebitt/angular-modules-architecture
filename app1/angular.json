@@ -1,16 +1,18 @@
 {
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "newProjectRoot": "",
   "projects": {
     "app1": {
       "projectType": "application",
       "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
+        "@schematics/angular:component": {
+          "style": "sass"
         }
       },
       "root": "apps/app1",
       "sourceRoot": "apps/app1/src",
-      "prefix": "app1",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -20,9 +22,14 @@
             "main": "apps/app1/src/main.ts",
             "polyfills": "apps/app1/src/polyfills.ts",
             "tsConfig": "apps/app1/tsconfig.app.json",
-            "aot": true,
-            "assets": ["apps/app1/src/favicon.ico", "apps/app1/src/assets"],
-            "styles": ["apps/app1/src/styles.scss"],
+            "aot": false,
+            "assets": [
+              "apps/app1/src/favicon.ico",
+              "apps/app1/src/assets"
+            ],
+            "styles": [
+              "apps/app1/src/styles.sass"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -38,6 +45,7 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -73,6 +81,23 @@
             "browserTarget": "app1:build"
           }
         },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/app1/src/test.ts",
+            "polyfills": "apps/app1/src/polyfills.ts",
+            "tsConfig": "apps/app1/tsconfig.spec.json",
+            "karmaConfig": "apps/app1/karma.conf.js",
+            "assets": [
+              "apps/app1/src/favicon.ico",
+              "apps/app1/src/assets"
+            ],
+            "styles": [
+              "apps/app1/src/styles.sass"
+            ],
+            "scripts": []
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -80,30 +105,21 @@
               "apps/app1/tsconfig.app.json",
               "apps/app1/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/app1/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/app1/jest.config.js",
-            "tsConfig": "apps/app1/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/app1/src/test-setup.ts"
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
     },
     "app1-e2e": {
-      "root": "apps/app1-e2e",
-      "sourceRoot": "apps/app1-e2e/src",
       "projectType": "application",
+      "root": "apps/app1-e2e",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "cypressConfig": "apps/app1-e2e/cypress.json",
-            "tsConfig": "apps/app1-e2e/tsconfig.e2e.json",
+            "protractorConfig": "apps/app1-e2e/protractor.conf.js",
             "devServerTarget": "app1:serve"
           },
           "configurations": {
@@ -115,25 +131,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/app1-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/app1-e2e/**"]
+            "tsConfig": "apps/app1-e2e/tsconfig.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
-    }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "analytics": false
-  },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
-    }
-  },
+    }},
   "defaultProject": "app1"
 }
