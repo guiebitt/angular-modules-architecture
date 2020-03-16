@@ -23,10 +23,7 @@
             "polyfills": "apps/libs/src/polyfills.ts",
             "tsConfig": "apps/libs/tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "apps/libs/src/favicon.ico",
-              "apps/libs/src/assets"
-            ],
+            "assets": ["apps/libs/src/favicon.ico", "apps/libs/src/assets"],
             "styles": [
               "./node_modules/@portinari/style/css/po-theme-default.min.css",
               "apps/libs/src/styles.sass"
@@ -89,10 +86,7 @@
             "polyfills": "apps/libs/src/polyfills.ts",
             "tsConfig": "apps/libs/tsconfig.spec.json",
             "karmaConfig": "apps/libs/karma.conf.js",
-            "assets": [
-              "apps/libs/src/favicon.ico",
-              "apps/libs/src/assets"
-            ],
+            "assets": ["apps/libs/src/favicon.ico", "apps/libs/src/assets"],
             "styles": [
               "./node_modules/@portinari/style/css/po-theme-default.min.css",
               "apps/libs/src/styles.sass"
@@ -107,9 +101,7 @@
               "apps/libs/tsconfig.app.json",
               "apps/libs/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -134,10 +126,46 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/libs-e2e/tsconfig.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
+        }
+      }
+    },
+    "loading": {
+      "projectType": "library",
+      "root": "libs/loading",
+      "sourceRoot": "libs/loading/src",
+      "prefix": "libs",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/loading/tsconfig.lib.json",
+            "project": "libs/loading/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/loading/tsconfig.lib.json",
+              "libs/loading/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/loading/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/loading/jest.config.js",
+            "tsConfig": "libs/loading/tsconfig.spec.json",
+            "setupFile": "libs/loading/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }

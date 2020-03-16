@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-
 import { PoMenuItem } from '@portinari/portinari-ui';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+import { LoadingService } from './../../../../libs/loading/src/lib/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +15,17 @@ export class AppComponent {
     { label: 'Home', action: this.onClick.bind(this) }
   ];
 
+  constructor(private readonly loading: LoadingService) { }
+
   private onClick() {
-    alert('Clicked in menu item')
+    alert('Clicked in menu item');
   }
 
+  loading10s() {
+    this.loading.executeWithLoading(
+      () => of('After loading').pipe(delay(5000))
+    ).subscribe(result => {
+      console.log(result);
+    });
+  }
 }

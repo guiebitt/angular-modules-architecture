@@ -13,6 +13,9 @@
     },
     "libs-e2e": {
       "tags": []
+    },
+    "loading": {
+      "tags": []
     }
   }
 }
