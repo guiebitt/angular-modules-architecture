@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve app1 --proxy-config apps/app1/proxy.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
@@ -36,6 +36,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@libs/loading": "0.0.4",
     "@nrwl/angular": "8.12.10",
     "@nrwl/schematics": "^8.12.10",
     "@portinari/portinari-ui": "^1.28.0",
@@ -64,6 +65,11 @@
     "tslint": "~5.15.0",
     "typescript": "~3.5.3",
     "@nrwl/workspace": "8.12.10",
-    "prettier": "1.18.2"
+    "prettier": "1.18.2",
+    "jest-preset-angular": "7.0.0",
+    "@nrwl/jest": "8.12.10",
+    "jest": "24.1.0",
+    "@types/jest": "24.0.9",
+    "ts-jest": "24.0.0"
   }
 }

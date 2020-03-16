@@ -23,10 +23,7 @@
             "polyfills": "apps/app1/src/polyfills.ts",
             "tsConfig": "apps/app1/tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "apps/app1/src/favicon.ico",
-              "apps/app1/src/assets"
-            ],
+            "assets": ["apps/app1/src/favicon.ico", "apps/app1/src/assets"],
             "styles": [
               "./node_modules/@portinari/style/css/po-theme-default.min.css",
               "apps/app1/src/styles.sass"
@@ -89,10 +86,7 @@
             "polyfills": "apps/app1/src/polyfills.ts",
             "tsConfig": "apps/app1/tsconfig.spec.json",
             "karmaConfig": "apps/app1/karma.conf.js",
-            "assets": [
-              "apps/app1/src/favicon.ico",
-              "apps/app1/src/assets"
-            ],
+            "assets": ["apps/app1/src/favicon.ico", "apps/app1/src/assets"],
             "styles": [
               "./node_modules/@portinari/style/css/po-theme-default.min.css",
               "apps/app1/src/styles.sass"
@@ -107,9 +101,7 @@
               "apps/app1/tsconfig.app.json",
               "apps/app1/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -134,10 +126,39 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/app1-e2e/tsconfig.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
+        }
+      }
+    },
+    "got-houses": {
+      "projectType": "library",
+      "root": "libs/got-houses",
+      "sourceRoot": "libs/got-houses/src",
+      "prefix": "app1",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/got-houses/tsconfig.lib.json",
+              "libs/got-houses/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/got-houses/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/got-houses/jest.config.js",
+            "tsConfig": "libs/got-houses/tsconfig.spec.json",
+            "setupFile": "libs/got-houses/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }

@@ -13,6 +13,9 @@
     },
     "app1-e2e": {
       "tags": []
+    },
+    "got-houses": {
+      "tags": []
     }
   }
 }

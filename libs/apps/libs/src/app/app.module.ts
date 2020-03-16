@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
     PoPageModule,
     PoButtonModule,
     PoMenuModule,
-    LoadingModule.forRoot()
+    LoadingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

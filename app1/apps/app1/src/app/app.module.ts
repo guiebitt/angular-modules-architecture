@@ -1,10 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { PoMenuModule, PoPageModule, PoToolbarModule } from '@portinari/portinari-ui';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PoModule } from '@portinari/portinari-ui';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,7 +12,9 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PoModule,
+    PoMenuModule,
+    PoPageModule,
+    PoToolbarModule,
     RouterModule.forRoot([])
   ],
   providers: [],
