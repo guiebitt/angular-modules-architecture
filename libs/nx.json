@@ -1,0 +1,22 @@
+{
+  "npmScope": "libs",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "libs-test": {
+      "tags": []
+    },
+    "libs-test-e2e": {
+      "tags": [],
+      "implicitDependencies": ["libs-test"]
+    }
+  }
+}
