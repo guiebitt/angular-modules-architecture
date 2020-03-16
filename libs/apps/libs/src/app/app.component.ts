@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
+import { LoadingService } from '@libs/loading';
 import { PoMenuItem } from '@portinari/portinari-ui';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { LoadingService } from './../../../../libs/loading/src/lib/loading.service';
 
 @Component({
   selector: 'app-root',

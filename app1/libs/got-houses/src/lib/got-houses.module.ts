@@ -5,13 +5,12 @@ import { PoTableModule } from '@portinari/portinari-ui';
 import { GotHousesComponent } from './got-houses.component';
 
 @NgModule({
+  declarations: [GotHousesComponent],
   imports: [
     CommonModule,
     PoTableModule,
     LoadingModule
   ],
-  declarations: [GotHousesComponent],
-  entryComponents: [GotHousesComponent],
   exports: [
     GotHousesComponent
   ]

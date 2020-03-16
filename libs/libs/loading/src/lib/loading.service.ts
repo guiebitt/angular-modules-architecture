@@ -4,15 +4,17 @@ import { finalize, mergeMap, tap } from 'rxjs/operators';
 import { ILoadingObservableFn, ILoadingPromiseFn } from './loading-generic-fn.interface';
 import { LoadingComponent } from './loading.component';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LoadingService {
 
   private loadingComponentRef = undefined;
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private appRef: ApplicationRef,
-    private injector: Injector) {
+    private readonly componentFactoryResolver: ComponentFactoryResolver,
+    private readonly appRef: ApplicationRef,
+    private readonly injector: Injector) {
   }
 
   public executeWithLoading<ReturnType>(
