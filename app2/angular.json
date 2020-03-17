@@ -23,10 +23,7 @@
             "polyfills": "apps/app2/src/polyfills.ts",
             "tsConfig": "apps/app2/tsconfig.app.json",
             "aot": false,
-            "assets": [
-              "apps/app2/src/favicon.ico",
-              "apps/app2/src/assets"
-            ],
+            "assets": ["apps/app2/src/favicon.ico", "apps/app2/src/assets"],
             "styles": [
               "./node_modules/@portinari/style/css/po-theme-default.min.css",
               "apps/app2/src/styles.sass"
@@ -89,10 +86,7 @@
             "polyfills": "apps/app2/src/polyfills.ts",
             "tsConfig": "apps/app2/tsconfig.spec.json",
             "karmaConfig": "apps/app2/karma.conf.js",
-            "assets": [
-              "apps/app2/src/favicon.ico",
-              "apps/app2/src/assets"
-            ],
+            "assets": ["apps/app2/src/favicon.ico", "apps/app2/src/assets"],
             "styles": [
               "./node_modules/@portinari/style/css/po-theme-default.min.css",
               "apps/app2/src/styles.sass"
@@ -107,9 +101,7 @@
               "apps/app2/tsconfig.app.json",
               "apps/app2/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -134,10 +126,70 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/app2-e2e/tsconfig.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
+        }
+      }
+    },
+    "widget-one": {
+      "projectType": "library",
+      "root": "libs/widget-one",
+      "sourceRoot": "libs/widget-one/src",
+      "prefix": "app2",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/widget-one/tsconfig.lib.json",
+              "libs/widget-one/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/widget-one/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/widget-one/jest.config.js",
+            "tsConfig": "libs/widget-one/tsconfig.spec.json",
+            "setupFile": "libs/widget-one/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "widget-two": {
+      "projectType": "library",
+      "root": "libs/widget-two",
+      "sourceRoot": "libs/widget-two/src",
+      "prefix": "app2",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/widget-two/tsconfig.lib.json",
+              "libs/widget-two/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/widget-two/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/widget-two/jest.config.js",
+            "tsConfig": "libs/widget-two/tsconfig.spec.json",
+            "setupFile": "libs/widget-two/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }

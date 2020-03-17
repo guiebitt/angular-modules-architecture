@@ -13,6 +13,12 @@
     },
     "app2-e2e": {
       "tags": []
+    },
+    "widget-one": {
+      "tags": []
+    },
+    "widget-two": {
+      "tags": []
     }
   }
 }

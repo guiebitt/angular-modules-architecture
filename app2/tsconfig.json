@@ -11,14 +11,12 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {},
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@app2/widget-one": ["libs/widget-one/src/index.ts"],
+      "@app2/widget-two": ["libs/widget-two/src/index.ts"]
+    },
     "rootDir": "."
   },
   "angularCompilerOptions": {
